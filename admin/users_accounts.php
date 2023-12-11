@@ -44,9 +44,25 @@ if(isset($_GET['delete'])){
 
 <?php include '../components/admin_header.php'; ?>
 
+
 <section class="accounts">
 
-   <h1 class="heading">user accounts</h1>
+<h1 class="heading">Medewerkers</h1>
+
+<div class="box-container">
+
+<div class="box">
+   <p>Medewerker toevoegen</p>
+   <a href="../user_register.php" class="option-btn">Toevoegen</a>
+</div>
+
+<?php
+   $select_accounts = $conn->prepare("SELECT * FROM `users`");
+   $select_accounts->execute();
+   if($select_accounts->rowCount() > 0){
+      while($fetch_accounts = $select_accounts->fetch(PDO::FETCH_ASSOC)){ 
+      }}  
+?>
 
    <div class="box-container">
 

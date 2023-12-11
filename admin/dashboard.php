@@ -31,30 +31,14 @@ if(!isset($admin_id)){
 
 <section class="dashboard">
 
-   <h1 class="heading">dashboard</h1>
+   <h1 class="heading">Dashboard</h1>
 
    <div class="box-container">
 
       <div class="box">
-         <h3>welcome!</h3>
+         <h3>Welcome!</h3>
          <p><?= $fetch_profile['name']; ?></p>
-         <a href="update_profile.php" class="btn">update profile</a>
-      </div>
-
-      <div class="box">
-         <?php
-            $total_pendings = 0;
-            $select_pendings = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
-            $select_pendings->execute(['pending']);
-            if($select_pendings->rowCount() > 0){
-               while($fetch_pendings = $select_pendings->fetch(PDO::FETCH_ASSOC)){
-                  $total_pendings += $fetch_pendings['total_price'];
-               }
-            }
-         ?>
-         <h3><span>$</span><?= $total_pendings; ?><span>/-</span></h3>
-         <p>total pendings</p>
-         <a href="placed_orders.php" class="btn">see orders</a>
+         <a href="update_profile.php" class="btn">Update profile</a>
       </div>
 
       <div class="box">
@@ -102,8 +86,8 @@ if(!isset($admin_id)){
             $number_of_users = $select_users->rowCount()
          ?>
          <h3><?= $number_of_users; ?></h3>
-         <p>normal users</p>
-         <a href="users_accounts.php" class="btn">see users</a>
+         <p>Medewerkers</p>
+         <a href="users_accounts.php" class="btn">see Medewerkers</a>
       </div>
 
       <div class="box">
@@ -113,10 +97,21 @@ if(!isset($admin_id)){
             $number_of_admins = $select_admins->rowCount()
          ?>
          <h3><?= $number_of_admins; ?></h3>
-         <p>admin users</p>
-         <a href="admin_accounts.php" class="btn">see admins</a>
+         <p>Directie</p>
+         <a href="admin_accounts.php" class="btn">see directie</a>
       </div>
-
+       
+      <div class="box">
+         <?php
+            $select_admins = $conn->prepare("SELECT * FROM `vrijwilligers`");
+            $select_admins->execute();
+            $number_of_admins = $select_admins->rowCount()
+         ?>
+         <h3><?= $number_of_admins; ?></h3>
+         <p>Vrijwilligers</p>
+         <a href="admin_accounts.php" class="btn">see vrijwilligers</a>
+      </div>
+      
       <div class="box">
          <?php
             $select_messages = $conn->prepare("SELECT * FROM `messages`");

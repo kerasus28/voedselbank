@@ -39,6 +39,7 @@ if(isset($_POST['submit'])){
    <link rel="stylesheet" href="../css/admin_style.css">
 
 </head>
+<?php include '../components/standard_header.php'; ?>
 <body>
 
 <?php
@@ -62,6 +63,9 @@ if(isset($_POST['submit'])){
       <input type="text" name="name" required placeholder="enter your username" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="password" name="pass" required placeholder="enter your password" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="submit" value="login now" class="btn" name="submit">
+      <p>Andere gebruiker?</p>
+      <a href="../home.php" class="option-btn">Medewerkers</a>
+      <a href="user_register.php?" class="option-btn">Vrijwilliger</a>
    </form>
 
 </section>
