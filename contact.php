@@ -21,14 +21,14 @@ if(isset($_POST['send'])){
    $msg = $_POST['msg'];
    $msg = filter_var($msg, FILTER_SANITIZE_STRING);
 
-   $select_message = $conn->prepare("SELECT * FROM `messages` WHERE name = ? AND email = ? AND number = ? AND message = ?");
+   $select_message = $conn->prepare("SELECT * FROM `cc` WHERE name = ? AND email = ? AND number = ? AND msg = ?");
    $select_message->execute([$name, $email, $number, $msg]);
 
    if($select_message->rowCount() > 0){
       $message[] = 'already sent message!';
    }else{
 
-      $insert_message = $conn->prepare("INSERT INTO `messages`(user_id, name, email, number, message) VALUES(?,?,?,?,?)");
+      $insert_message = $conn->prepare("INSERT INTO `cc`(user_id, name, email, number, msg) VALUES(?,?,?,?,?)");
       $insert_message->execute([$user_id, $name, $email, $number, $msg]);
 
       $message[] = 'sent message successfully!';
