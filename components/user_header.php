@@ -21,7 +21,7 @@
          <a href="user_dashboard.php">Home</a>
          <a href="producten.php">Producten</a>
          <a href="producten_overzicht.php">Producten overzicht</a>
-         <a href="leveranciers.php">Leveranciers</a>
+         <a href="leveranciers_user.php">Leveranciers</a>
       </nav>
 
       <div class="icons">

@@ -22,7 +22,7 @@ if(isset($_GET['delete'])){
    $delete_cart->execute([$delete_id]);
    $delete_wishlist = $conn->prepare("DELETE FROM `wishlist` WHERE user_id = ?");
    $delete_wishlist->execute([$delete_id]);
-   header('location:users_accounts.php');
+   header('location:vrijwilligers_accounts.php');
 }
 
 ?>
@@ -47,7 +47,7 @@ if(isset($_GET['delete'])){
 
 <section class="accounts">
 
-<h1 class="heading">Medewerkers</h1>
+<h1 class="heading">Vrijwilligers</h1>
 
 <div class="box-container">
 

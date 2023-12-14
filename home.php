@@ -58,7 +58,7 @@ if(isset($_POST['submit'])){
       <input type="submit" value="login now" class="btn" name="submit">
       <p>Andere gebruiker?</p>
       <a href="/voedselbank/admin/admin_login.php" class="option-btn">Directie</a>
-      <a href="user_register.php?" class="option-btn">Vrijwilliger</a>
+      <a href="/voedselbank/vrijwilligers/vrijwilligers_login.php" class="option-btn">Vrijwilliger</a>
    </form>
 
 </section>

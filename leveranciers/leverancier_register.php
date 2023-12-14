@@ -30,6 +30,7 @@ if(isset($_POST['submit'])){
          $insert_user = $conn->prepare("INSERT INTO `leveranciers`(bedrijfsnaam, adres, contactpersoon,email, telefoonnummer) VALUES(?,?,?,?,?)");
          $insert_user->execute([$name, $adres, $persoon,$email,$tel]);
          $message[] = 'registered successfully, login now please!';
+         header("Location: ../home.php");
       }
    }
 

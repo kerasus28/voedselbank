@@ -4,10 +4,10 @@ include '../components/connect.php';
 
 session_start();
 
-if(isset($_SESSION['user_id'])){
-   $user_id = $_SESSION['user_id'];
+if(isset($_SESSION['vrijwilliger_id'])){
+   $vrijwilliger_id = $_SESSION['vrijwilliger_id'];
 }else{
-   $user_id = '';
+   $vrijwilliger_id = '';
 };
 
 if(isset($_POST['submit'])){
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
 
 <?php include '../components/footer.php'; ?>
 
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
 
 </body>
 </html>
