@@ -35,38 +35,108 @@ include 'components/wishlist_cart.php';
    
 <?php include 'components/user_header.php'; ?>
 
+<div class="home-bg">
+
+<section class="home">
+
+   <div class="swiper home-slider">
+   
+   <div class="swiper-wrapper">
+
+      <div class="swiper-slide slide">
+         <div class="image">
+            <img src="images/pngwing.com.png" alt="">
+         </div>
+         <div class="content">
+            <span>up to 10% off</span>
+            <h3>Newest Camaro</h3>
+            <a href="shop.php" class="btn">shop now</a>
+         </div>
+      </div>
+
+      <div class="swiper-slide slide">
+         <div class="image">
+            <img src="images/Suzuki.png" alt="">
+         </div>
+         <div class="content">
+            <span>up to 10% off</span>
+            <h3>Newest Bikes</h3>
+            <a href="shop.php" class="btn">shop now</a>
+         </div>
+      </div>
+
+      <div class="swiper-slide slide">
+         <div class="image">
+            <img src="images/suv.png" alt="">
+         </div>
+         <div class="content">
+            <span>upto 10% off</span>
+            <h3>latest headsets</h3>
+            <a href="shop.php" class="btn">shop now</a>
+         </div>
+      </div>
+
+   </div>
+
+      <div class="swiper-pagination"></div>
+
+   </div>
+
+</section>
+
+</div>
 
 <section class="category">
 
-   <h1 class="heading">Producten Categorieen</h1>
+   <h1 class="heading">shop by category</h1>
 
    <div class="swiper category-slider">
 
    <div class="swiper-wrapper">
 
-   <a href="category.php?category=auto" class="swiper-slide slide">
-      <img src="images/car.png" alt="">
-      <h3>Auto's</h3>
+   <a href="category.php?category=AGF" class="swiper-slide slide">
+      <img src="images/fruit.png" alt="">
+      <h3>AGF</h3>
    </a>
 
-   <a href="category.php?category=motor" class="swiper-slide slide">
-      <img src="images/motor.png" alt="">
-      <h3>Motor</h3>
+   <a href="category.php?category=Beleg" class="swiper-slide slide">
+      <img src="images/beleg.png" alt="">
+      <h3>Beleg</h3>
    </a>
 
-   <a href="category.php?category=quad" class="swiper-slide slide">
-      <img src="images/quad.png" alt="">
-      <h3>Quad motor</h3>
+   <a href="category.php?category=Zuivel" class="swiper-slide slide">
+      <img src="images/zuivel.png" alt="">
+      <h3>Zuivel</h3>
    </a>
 
-   <a href="category.php?category=suv" class="swiper-slide slide">
-      <img src="images/truck.png" alt="">
-      <h3>SUV's</h3>
+   <a href="category.php?category=Brood" class="swiper-slide slide">
+      <img src="images/brood.png" alt="">
+      <h3>Brood</h3>
    </a>
 
-   <a href="category.php?category=vrachtwagen" class="swiper-slide slide">
-      <img src="images/Truck2.png" alt="">
-      <h3>Vrachtwagen</h3>
+   <a href="category.php?category=Drinken" class="swiper-slide slide">
+      <img src="images/drinken.png" alt="">
+      <h3>Drinken</h3>
+   </a>
+
+   <a href="category.php?category=Pasta" class="swiper-slide slide">
+      <img src="images/pasta.png" alt="">
+      <h3>Pasta</h3>
+   </a>
+
+   <a href="category.php?category=Eten" class="swiper-slide slide">
+      <img src="images/eten.png" alt="">
+      <h3>Eten</h3>
+   </a>
+
+   <a href="category.php?category=Snack" class="swiper-slide slide">
+      <img src="images/snack.png" alt="">
+      <h3>Snack</h3>
+   </a>
+
+   <a href="category.php?category=Drogmetica" class="swiper-slide slide">
+      <img src="images/drogmetica.png" alt="">
+      <h3>Drogmetica</h3>
    </a>
 
 
