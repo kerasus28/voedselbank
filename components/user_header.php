@@ -15,14 +15,13 @@
 
    <section class="flex">
 
-      <a href="home.php" class="logo">Mr.Muscle<span>.</span></a>
+      <a href="user_dashboard.php" class="logo">Maaskantje<span>.</span></a>
 
       <nav class="navbar">
-         <a href="home.php">home</a>
-         <a href="about.php">about</a>
-         <a href="orders.php">orders</a>
-         <a href="shop.php">shop</a>
-         <a href="contact.php">contact</a>
+         <a href="user_dashboard.php">Home</a>
+         <a href="producten.php">Producten</a>
+         <a href="producten_overzicht.php">Producten overzicht</a>
+         <a href="leveranciers_user.php">Leveranciers</a>
       </nav>
 
       <div class="icons">
@@ -51,10 +50,6 @@
          ?>
          <p><?= $fetch_profile["name"]; ?></p>
          <a href="update_user.php" class="btn">update profile</a>
-         <div class="flex-btn">
-            <a href="user_register.php" class="option-btn">register</a>
-            <a href="user_login.php" class="option-btn">login</a>
-         </div>
          <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
          <?php
             }else{

@@ -1,4 +1,4 @@
-<footer class="footer">
+<!-- <footer class="footer">
 
    <section class="grid">
 
@@ -38,4 +38,4 @@
 
    <div class="credit">&copy; copyright 2023 by <span>Burak Aydin</span> | all rights reserved!</div>
 
-</footer>
+</footer> -->
