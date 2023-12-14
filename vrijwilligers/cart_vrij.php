@@ -7,7 +7,7 @@ session_start();
 if(isset($_SESSION['vrijwilliger_id'])){
    $vrijwilliger_id = $_SESSION['vrijwilliger_id'];
 }else{
-   $vrijwilliger_idd = '';
+   $vrijwilliger_id = '';
    header('location:../home.php');
 };
 
@@ -19,7 +19,7 @@ if(isset($_POST['delete'])){
 
 if(isset($_GET['delete_all'])){
    $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
-   $delete_cart_item->execute([$user_id]);
+   $delete_cart_item->execute([$vrijwilliger_id]);
    header('location:cart.php');
 }
 
@@ -68,7 +68,7 @@ if(isset($_POST['update_qty'])){
    <form action="" method="post" class="box">
       <input type="hidden" name="cart_id" value="<?= $fetch_cart['id']; ?>">
       <a href="quick_view.php?pid=<?= $fetch_cart['pid']; ?>" class="fas fa-eye"></a>
-      <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
+      <img src="../uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
       <div class="name"><?= $fetch_cart['name']; ?></div>
       <div class="flex">
          <div class="price">$<?= $fetch_cart['price']; ?>/-</div>
@@ -89,9 +89,8 @@ if(isset($_POST['update_qty'])){
 
    <div class="cart-total">
       <p>grand total : <span>$<?= $grand_total; ?>/-</span></p>
-      <a href="shop.php" class="option-btn">continue shopping</a>
       <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">delete all item</a>
-      <a href="checkout.php" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>">proceed to checkout</a>
+      <a href="checkoutvrij.php" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>">proceed to checkout</a>
    </div>
 
 </section>

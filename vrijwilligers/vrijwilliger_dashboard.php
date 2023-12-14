@@ -10,7 +10,7 @@ if(isset($_SESSION['vrijwilliger_id'])){
    $vrijwilliger_id = '';
 };
 
-include '../components/wishlist_cart.php';
+include 'wishlistcart.php';
 
 ?>
 
@@ -44,47 +44,47 @@ include '../components/wishlist_cart.php';
 
    <div class="swiper-wrapper">
 
-   <a href="../category.php?category=AGF" class="swiper-slide slide">
+   <a href="categoryvrij.php?category=AGF" class="swiper-slide slide">
       <img src="../images/fruit.png" alt="">
       <h3>AGF</h3>
    </a>
 
-   <a href="../category.php?category=Beleg" class="swiper-slide slide">
+   <a href="categoryvrij.php?category=Beleg" class="swiper-slide slide">
       <img src="../images/beleg.png" alt="">
       <h3>Beleg</h3>
    </a>
 
-   <a href="../category.php?category=Zuivel" class="swiper-slide slide">
+   <a href="categoryvrij.php?category=Zuivel" class="swiper-slide slide">
       <img src="../images/zuivel.png" alt="">
       <h3>Zuivel</h3>
    </a>
 
-   <a href="../category.php?category=Brood" class="swiper-slide slide">
+   <a href="categoryvrij.php?category=Brood" class="swiper-slide slide">
       <img src="../images/brood.png" alt="">
       <h3>Brood</h3>
    </a>
 
-   <a href="../category.php?category=Drinken" class="swiper-slide slide">
+   <a href="categoryvrij.php?category=Drinken" class="swiper-slide slide">
       <img src="../images/drinken.png" alt="">
       <h3>Drinken</h3>
    </a>
 
-   <a href="../category.php?category=Pasta" class="swiper-slide slide">
+   <a href="categoryvrij.php?category=Pasta" class="swiper-slide slide">
       <img src="../images/pasta.png" alt="">
       <h3>Pasta</h3>
    </a>
 
-   <a href="../category.php?category=Eten" class="swiper-slide slide">
+   <a href="categoryvrij.php?category=Eten" class="swiper-slide slide">
       <img src="../images/eten.png" alt="">
       <h3>Eten</h3>
    </a>
 
-   <a href="../category.php?category=Snack" class="swiper-slide slide">
+   <a href="categoryvrij.php?category=Snack" class="swiper-slide slide">
       <img src="../images/snack.png" alt="">
       <h3>Snack</h3>
    </a>
 
-   <a href="../category.php?category=Drogmetica" class="swiper-slide slide">
+   <a href="categoryvrij.php?category=Drogmetica" class="swiper-slide slide">
       <img src="../images/drogmetica.png" alt="">
       <h3>Drogmetica</h3>
    </a>
@@ -120,13 +120,13 @@ include '../components/wishlist_cart.php';
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
       <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button>
       <a href="../quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a>
-      <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
+      <img src="../uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_product['name']; ?></div>
       <div class="flex">
          <div class="price"><span>$</span><?= $fetch_product['price']; ?><span>/-</span></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
-      <input type="submit" value="add to cart" class="btn" name="add_to_cart_vrij">
+      <input type="submit" value="add to cart" class="btn" name="add_tocart">
    </form>
    <?php
       }

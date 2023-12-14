@@ -5,7 +5,8 @@ include '../components/connect.php';
 session_start();
 
 $vrijwilliger_id = $_SESSION['vrijwilliger_id'];
-if(!isset($$vrijwilliger_id)){
+
+if(!isset($vrijwilliger_id)){
    header('location:overzichtvrij.php');
 };
 
@@ -52,8 +53,8 @@ if(!isset($$vrijwilliger_id)){
       <div class="price">€<span><?= $fetch_products['price']; ?></span>/-</div>
       <div class="details"><span><?= $fetch_products['details']; ?></span></div>
       <div class="flex-btn">
-         <a href="updatevrij.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>
-         <a href="products.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
+         <a href="update_productt.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>
+         <a href="overzichtvrij.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
       </div>
    </div>
    <?php

@@ -61,13 +61,13 @@ if(isset($_POST['submit'])){
 </head>
 <body>
    
-<?php include '../components/standard_header.php'; ?>
+<?php include '../components/vrijwilliger_header.php'; ?>
 
 <section class="form-container">
 
    <form action="" method="post">
       <h3>update now</h3>
-      <input type="hidden" name="prev_pass" value="<?= $fetch["password"]; ?>">
+      <input type="hidden" name="prev_pass" value="<?= $fetch_profile["password"]; ?>">
       <input type="text" name="name" required placeholder="enter your username" maxlength="20"  class="box" value="<?= $fetch_profile["name"]; ?>">
       <input type="email" name="email" required placeholder="enter your email" maxlength="50"  class="box" oninput="this.value = this.value.replace(/\s/g, '')" value="<?= $fetch_profile["email"]; ?>">
       <input type="password" name="old_pass" placeholder="enter your old password" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
@@ -90,9 +90,8 @@ if(isset($_POST['submit'])){
 
 
 
-<!-- <?php include 'components/footer.php'; ?> -->
 
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
 
 </body>
 </html>
