@@ -35,57 +35,6 @@ include 'components/wishlist_cart.php';
    
 <?php include 'components/user_header.php'; ?>
 
-<div class="home-bg">
-
-<section class="home">
-
-   <div class="swiper home-slider">
-   
-   <div class="swiper-wrapper">
-
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/pngwing.com.png" alt="">
-         </div>
-         <div class="content">
-            <span>up to 10% off</span>
-            <h3>Newest Camaro</h3>
-            <a href="shop.php" class="btn">shop now</a>
-         </div>
-      </div>
-
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/Suzuki.png" alt="">
-         </div>
-         <div class="content">
-            <span>up to 10% off</span>
-            <h3>Newest Bikes</h3>
-            <a href="shop.php" class="btn">shop now</a>
-         </div>
-      </div>
-
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/suv.png" alt="">
-         </div>
-         <div class="content">
-            <span>upto 10% off</span>
-            <h3>latest headsets</h3>
-            <a href="shop.php" class="btn">shop now</a>
-         </div>
-      </div>
-
-   </div>
-
-      <div class="swiper-pagination"></div>
-
-   </div>
-
-</section>
-
-</div>
-
 <section class="category">
 
    <h1 class="heading">shop by category</h1>
