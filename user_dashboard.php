@@ -35,11 +35,6 @@ include 'components/wishlist_cart.php';
    
 <?php include 'components/user_header.php'; ?>
 
-<<<<<<< HEAD
-</div>
-
-=======
->>>>>>> cfb449fc66337d347b68f97a3834d854147bc1f5
 <section class="category">
 
    <h1 class="heading">shop by category</h1>
