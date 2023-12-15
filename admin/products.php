@@ -15,6 +15,7 @@ if(isset($_POST['add_product'])){
    $name = $_POST['name'];
    $price = $_POST['price'];
    $details = $_POST['details'];
+   $streepjescode = $_POST['streepjescode'];
    
 
    $image_01 = $_FILES['image_01']['name'];
@@ -30,8 +31,8 @@ if(isset($_POST['add_product'])){
       $message[] = 'product name already exist!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01) VALUES(?,?,?,?)");
-      $insert_products->execute([$name, $details, $price, $image_01]);
+      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01, streepjescode) VALUES(?,?,?,?,?)");
+      $insert_products->execute([$name, $details, $price, $image_01,$streepjescode]);
 
       if($insert_products){
          if($image_size_01 > 2000000){
@@ -91,6 +92,10 @@ if(isset($_GET['delete'])){
 
    <form action="" method="post" enctype="multipart/form-data">
       <div class="flex">
+      <div class="inputBox">
+            <span>product Streepjescode (required)</span>
+            <input type="text" class="box" required maxlength="100" placeholder="enter product name" name="streepjescode">
+         </div>
          <div class="inputBox">
             <span>product Categorie (required)</span>
             <input type="text" class="box" required maxlength="100" placeholder="enter product name" name="name">

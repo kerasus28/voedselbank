@@ -19,7 +19,7 @@
 
       <nav class="navbar">
          <a href="vrijwilliger_dashboard.php">Home</a>
-         <a href="producten_vrijwilligers.php">Producten</a>
+         <!-- <a href="producten_vrijwilligers.php">Producten</a> -->
          <a href="overzichtvrij.php">Producten overzicht</a>
       </nav>
 
