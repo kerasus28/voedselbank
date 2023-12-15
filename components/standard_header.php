@@ -15,7 +15,7 @@
 
    <section class="flex">
 
-      <a href="home.php" class="logo">Maaskantje<span>.</span></a>
+      <a href="../home.php" class="logo">Maaskantje<span>.</span></a>
 
     
       
