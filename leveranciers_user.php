@@ -59,7 +59,7 @@ if(isset($_GET['delete'])){
 
 <div class="box">
    <p>Leverancier toevoegen</p>
-   <a href="/voedselbank/leveranciers/leverancier_register.php" class="option-btn">Toevoegen</a>
+   <a href="leverancier_register.php" class="option-btn">Toevoegen</a>
 </div>
 
 <?php

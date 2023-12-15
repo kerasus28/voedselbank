@@ -1,6 +1,6 @@
 <?php
 
-include '../components/connect.php';
+include 'components/connect.php';
 
 session_start();
 
@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
          $insert_user = $conn->prepare("INSERT INTO `leveranciers`(bedrijfsnaam, adres, contactpersoon,email, telefoonnummer) VALUES(?,?,?,?,?)");
          $insert_user->execute([$name, $adres, $persoon,$email,$tel]);
          $message[] = 'registered successfully, login now please!';
-         header("Location: ../home.php");
+         // header("Location: leveranciers_user.php");
       }
    }
 
@@ -50,12 +50,12 @@ if(isset($_POST['submit'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
    
-<?php include '../components/user_header.php'; ?>
+<?php include 'components/user_header.php'; ?>
 
 <section class="form-container">
 
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
 
 
 
-<?php include '../components/footer.php'; ?>
+<?php include 'components/footer.php'; ?>
 
 <script src="js/script.js"></script>
 
