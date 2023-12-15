@@ -22,15 +22,6 @@ if(isset($_POST['add_product'])){
    $image_tmp_name_01 = $_FILES['image_01']['tmp_name'];
    $image_folder_01 = '../uploaded_img/'.$image_01;
 
-   $image_02 = $_FILES['image_02']['name'];
-   $image_size_02 = $_FILES['image_02']['size'];
-   $image_tmp_name_02 = $_FILES['image_02']['tmp_name'];
-   $image_folder_02 = '../uploaded_img/'.$image_02;
-
-   $image_03 = $_FILES['image_03']['name'];
-   $image_size_03 = $_FILES['image_03']['size'];
-   $image_tmp_name_03 = $_FILES['image_03']['tmp_name'];
-   $image_folder_03 = '../uploaded_img/'.$image_03;
 
    $select_products = $conn->prepare("SELECT * FROM `products` WHERE name = ?");
    $select_products->execute([$name]);
@@ -39,16 +30,16 @@ if(isset($_POST['add_product'])){
       $message[] = 'product name already exist!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01, image_02, image_03) VALUES(?,?,?,?,?,?)");
-      $insert_products->execute([$name, $details, $price, $image_01, $image_02, $image_03]);
+      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01) VALUES(?,?,?,?)");
+      $insert_products->execute([$name, $details, $price, $image_01]);
 
       if($insert_products){
-         if($image_size_01 > 2000000 OR $image_size_02 > 2000000 OR $image_size_03 > 2000000){
+         if($image_size_01 > 2000000){
             $message[] = 'image size is too large!';
          }else{
-            move_uploaded_file($image_tmp_name_01, $image_folder_01);
-            move_uploaded_file($image_tmp_name_02, $image_folder_02);
-            move_uploaded_file($image_tmp_name_03, $image_folder_03);
+            // move_uploaded_file($image_tmp_name_01, $image_folder_01);
+            // move_uploaded_file($image_tmp_name_02, $image_folder_02);
+            // move_uploaded_file($image_tmp_name_03, $image_folder_03);
             $message[] = 'new product added!';
          }
 
@@ -65,8 +56,6 @@ if(isset($_GET['delete'])){
    $delete_product_image->execute([$delete_id]);
    $fetch_delete_image = $delete_product_image->fetch(PDO::FETCH_ASSOC);
    unlink('../uploaded_img/'.$fetch_delete_image['image_01']);
-   unlink('../uploaded_img/'.$fetch_delete_image['image_02']);
-   unlink('../uploaded_img/'.$fetch_delete_image['image_03']);
    $delete_product = $conn->prepare("DELETE FROM `products` WHERE id = ?");
    $delete_product->execute([$delete_id]);
    $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE pid = ?");
@@ -103,34 +92,25 @@ if(isset($_GET['delete'])){
    <form action="" method="post" enctype="multipart/form-data">
       <div class="flex">
          <div class="inputBox">
-            <span>product name (required)</span>
+            <span>product Categorie (required)</span>
             <input type="text" class="box" required maxlength="100" placeholder="enter product name" name="name">
          </div>
          <div class="inputBox">
-            <span>product price (required)</span>
+            <span>product Naam (required)</span>
+            <textarea name="details" placeholder="enter product details" class="box" required maxlength="500" cols="30" rows="10"></textarea>
+         </div>
+         <div class="inputBox">
+            <span>product Aantal (required)</span>
             <input type="number" min="0" class="box" required max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" name="price">
          </div>
         <div class="inputBox">
             <span>image 01 (required)</span>
             <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
         </div>
-        <div class="inputBox">
-            <span>image 02 (required)</span>
-            <input type="file" name="image_02" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
-        </div>
-        <div class="inputBox">
-            <span>image 03 (required)</span>
-            <input type="file" name="image_03" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
-        </div>
-         <div class="inputBox">
-            <span>product details (required)</span>
-            <textarea name="details" placeholder="enter product details" class="box" required maxlength="500" cols="30" rows="10"></textarea>
-         </div>
       </div>
       
       <input type="submit" value="add product" class="btn" name="add_product">
    </form>
-
 </section>
 
 <section class="show-products">
