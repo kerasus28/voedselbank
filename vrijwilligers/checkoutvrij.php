@@ -18,6 +18,7 @@ if(isset($_POST['order'])){
 
    $name = $_POST['name'];
    $total_products = $_POST['total_products'];
+   $placed_on = $_POST['date'];
   
 
    $check_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
@@ -25,8 +26,8 @@ if(isset($_POST['order'])){
 
    if($check_cart->rowCount() > 0){
 
-      $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name,total_products) VALUES(?,?,?)");
-      $insert_order->execute([$vrijwilliger_id, $name, $total_products]);
+      $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name,total_products,placed_on) VALUES(?,?,?,?)");
+      $insert_order->execute([$vrijwilliger_id, $name, $total_products,$placed_on]);
 
       $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
       $delete_cart->execute([$vrijwilliger_id]);
@@ -73,11 +74,11 @@ if(isset($_POST['order'])){
          $select_cart->execute([$vrijwilliger_id]);
          if($select_cart->rowCount() > 0){
             while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
-               $cart_items[] = $fetch_cart['name'].' ('.$fetch_cart['price'].' x '. $fetch_cart['quantity'].') - ';
+               $cart_items[] = $fetch_cart['name'].' ( x '. $fetch_cart['quantity'].') - ';
                $total_products = implode($cart_items);
-               $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);
+               $grand_total += ( $fetch_cart['quantity']);
       ?>
-         <p> <?= $fetch_cart['name']; ?> <span>(<?= '$'.$fetch_cart['price'].'/- x '. $fetch_cart['quantity']; ?>)</span> </p>
+         <p> <?= $fetch_cart['details']; ?> <span>(<?= $fetch_cart['quantity']; ?>)</span> </p>
       <?php
             }
          }else{
@@ -93,7 +94,7 @@ if(isset($_POST['order'])){
 
       <div class="flex">
     <div class="inputBox">
-        <span>payment method :</span>
+        <span>Familie :</span>
         <select name="name" class="box" required>
             <?php
                 $select_names = $conn->prepare("SELECT name FROM `messages`");
@@ -106,6 +107,15 @@ if(isset($_POST['order'])){
                 }
             ?>
         </select>
+ <div class="inputBox"><br>
+        <span>Datum:</span>
+        <br>
+        <input type="date" name="date" class="box">
+        </div>
+    </div>
+   
+
+       
     </div>
 </div>
 

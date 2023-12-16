@@ -60,13 +60,7 @@ if(isset($_GET['delete'])){
    <a href="leverancier_register.php" class="option-btn">Toevoegen</a>
 </div>
 
-<?php
-   $select_accounts = $conn->prepare("SELECT * FROM `leveranciers`");
-   $select_accounts->execute();
-   if($select_accounts->rowCount() > 0){
-      while($fetch_accounts = $select_accounts->fetch(PDO::FETCH_ASSOC)){ 
-      }}  
-?>
+
 
    <div class="box-container">
 
@@ -83,7 +77,13 @@ if(isset($_GET['delete'])){
       <p> Product : <span><?= $fetch_accounts['product']; ?></span> </p>
       <p> Aantal : <span><?= $fetch_accounts['aantal']; ?></span> </p>
       <p> Leveringdatum : <span><?= $fetch_accounts['leveringdatum']; ?></span> </p>
+      <div class="flex-btn">
       <a href="leverancier_accounts.php?delete=<?= $fetch_accounts['id']; ?>" onclick="return confirm('delete this account? the user related information will also be delete!')" class="delete-btn">delete</a>
+      <?php
+            if($fetch_accounts['id'] == $admin_id){
+               echo '<a href="update_leveranciers.php" class="option-btn">update</a>';
+            }?>
+    </div>
    </div>
    <?php
          }

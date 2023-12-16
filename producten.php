@@ -20,7 +20,7 @@ if(isset($_POST['add_product'])){
    $image_01 = $_FILES['image_01']['name'];
    $image_size_01 = $_FILES['image_01']['size'];
    $image_tmp_name_01 = $_FILES['image_01']['tmp_name'];
-   $image_folder_01 = '../uploaded_img/'.$image_01;
+   $image_folder_01 = 'uploaded_img/'.$image_01;
 
    $select_products = $conn->prepare("SELECT * FROM `products` WHERE name = ?");
    $select_products->execute([$name]);
@@ -36,8 +36,7 @@ if(isset($_POST['add_product'])){
          if($image_size_01 > 2000000){
             $message[] = 'image size is too large!';
          }else{
-            // move_uploaded_file($image_tmp_name_01, $image_folder_01);
-   
+            move_uploaded_file($image_tmp_name_01, $image_folder_01);
             $message[] = 'new product added!';
          }
 
@@ -52,7 +51,7 @@ if(isset($_GET['delete'])){
    $delete_product_image = $conn->prepare("SELECT * FROM `products` WHERE id = ?");
    $delete_product_image->execute([$delete_id]);
    $fetch_delete_image = $delete_product_image->fetch(PDO::FETCH_ASSOC);
-   unlink('../uploaded_img/'.$fetch_delete_image['image_01']);
+   unlink('uploaded_img/'.$fetch_delete_image['image_01']);
    $delete_product = $conn->prepare("DELETE FROM `products` WHERE id = ?");
    $delete_product->execute([$delete_id]);
 
