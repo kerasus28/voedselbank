@@ -4,10 +4,10 @@ include '../components/connect.php';
 
 session_start();
 
-if(isset($_SESSION['vrijwilliger_id'])){
-   $vrijwilliger_id = $_SESSION['vrijwilliger_id'];
+if(isset($_SESSION['admin_id'])){
+   $admin_id = $_SESSION['admin_id'];
 }else{
-   $vrijwilliger_id = '';
+   $admin_id = '';
 };
 
 if(isset($_POST['submit'])){
@@ -54,7 +54,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
    
-<?php include 'components/user_header.php'; ?>
+<?php include '../components/admin_header.php'; ?>
 
 <section class="form-container">
 
