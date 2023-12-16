@@ -85,7 +85,10 @@ if(isset($_GET['delete'])){
       <p> Product : <span><?= $fetch_accounts['product']; ?></span> </p>
       <p> Aantal : <span><?= $fetch_accounts['aantal']; ?></span> </p>
       <p> Leveringdatum : <span><?= $fetch_accounts['leveringdatum']; ?></span> </p>
+      <div class="flex-btn">
+      <a href="update_leverancier.php?update=<?= $fetch_accounts['id']; ?>" class="option-btn">update</a>
       <a href="leverancier_accounts_user.php?delete=<?= $fetch_accounts['id']; ?>" onclick="return confirm('delete this account? the user related information will also be delete!')" class="delete-btn">delete</a>
+      </div>
    </div>
    <?php
          }

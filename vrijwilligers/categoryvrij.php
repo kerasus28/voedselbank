@@ -2,6 +2,7 @@
 
 include '../components/connect.php';
 
+
 session_start();
 
 if(isset($_SESSION['vrijwilliger_id'])){

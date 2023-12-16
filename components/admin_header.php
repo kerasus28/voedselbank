@@ -26,6 +26,7 @@
          <a href="../admin/vrijwilligers_accounts.php">Vrijwilligers</a>
          <a href="../admin/leverancier_accounts.php">Leveranciers</a>
          <a href="../admin/messages.php">Families</a>
+         <a href="../admin/managment.php">Managment</a>
       </nav>
 
       <div class="icons">
