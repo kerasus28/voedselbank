@@ -95,8 +95,18 @@ if(isset($_GET['delete'])){
          </div>
          <div class="inputBox">
             <span>product Categorie (required)</span>
-            <input type="text" class="box" required maxlength="100" placeholder="enter product name" name="name">
-         </div>
+            <select class="box" name="name" id="volwassenen">
+<option class="box" value="-">-</option> 
+<option class="box">AGF</option> 
+<option class="box">Beleg</option> 
+<option class="box">Zuivel</option> 
+<option class="box">Brood</option> 
+<option class="box">Drinken</option> 
+<option class="box">Pasta</option> 
+<option class="box">Eten</option> 
+<option class="box">Snack</option>
+<option class="box">Droogmetica</option>  
+</select> 
          <div class="inputBox">
             <span>product Naam (required)</span>
             <textarea name="details" placeholder="enter product details" class="box" required maxlength="500" cols="30" rows="10"></textarea>
@@ -130,7 +140,7 @@ if(isset($_GET['delete'])){
    <div class="box">
       <img src="../uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
-      <div class="price">€<span><?= $fetch_products['price']; ?></span>/-</div>
+      <div class="price"><span><?= $fetch_products['price']; ?></span></div>
       <div class="details"><span><?= $fetch_products['details']; ?></span></div>
       <div class="flex-btn">
          <a href="update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>

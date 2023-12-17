@@ -10,17 +10,42 @@
       }
    }
 ?>
+<?php
+$count_no_dates = $conn->prepare("SELECT COUNT(*) AS no_dates FROM `messages` m LEFT JOIN `orders` o ON m.name = o.name WHERE o.placed_on IS NULL");
+$count_no_dates->execute();
+$total_no_dates = $count_no_dates->fetch(PDO::FETCH_ASSOC)['no_dates'];
+
+?>
+
 
 <header class="header">
 
    <section class="flex">
 
       <a href="vrijwilliger_dashboard.php" class="logo">Maaskantje<span>.</span></a>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+<!-- custom css file link  -->
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.notification-count {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-left: 4px; /* pas dit aan afhankelijk van de gewenste ruimte */
+}
+</style>
+
 
       <nav class="navbar">
          <a href="vrijwilliger_dashboard.php">Home</a>
          <!-- <a href="producten_vrijwilligers.php">Producten</a> -->
          <a href="overzichtvrij.php">Producten overzicht</a>
+         <a href="messagess.php">Families</a>
+         <a href="meldingen.php">Meldigen <span class="notification-count"><?= $total_no_dates; ?></span></a>
       </nav>
 
       <div class="icons">

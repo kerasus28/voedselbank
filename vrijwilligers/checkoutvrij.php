@@ -111,7 +111,7 @@ if(isset($_POST['order'])){
     }
     ?>
 </select>
-
+</div>
 <!-- Voeg een script toe om de waarde van $name bij te werken -->
 <script>
     const select = document.getElementById('familyName');
