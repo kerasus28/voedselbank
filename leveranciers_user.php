@@ -59,7 +59,7 @@ if(isset($_GET['delete'])){
 
 <div class="box">
    <p>Leverancier toevoegen</p>
-   <a href="/voedselbank/leveranciers/leverancier_register.php" class="option-btn">Toevoegen</a>
+   <a href="leverancier_register.php" class="option-btn">Toevoegen</a>
 </div>
 
 <?php
@@ -82,8 +82,13 @@ if(isset($_GET['delete'])){
       <p> Bedrijfsnaam : <span><?= $fetch_accounts['bedrijfsnaam']; ?></span> </p>
       <p> Contactpersoon : <span><?= $fetch_accounts['contactpersoon']; ?></span> </p>
       <p> Email : <span><?= $fetch_accounts['email']; ?></span> </p>
-      <p> Leveringdatum : <span><?= $fetch_accounts['levering']; ?></span> </p>
+      <p> Product : <span><?= $fetch_accounts['product']; ?></span> </p>
+      <p> Aantal : <span><?= $fetch_accounts['aantal']; ?></span> </p>
+      <p> Leveringdatum : <span><?= $fetch_accounts['leveringdatum']; ?></span> </p>
+      <div class="flex-btn">
+      <a href="update_leverancier.php?update=<?= $fetch_accounts['id']; ?>" class="option-btn">update</a>
       <a href="leverancier_accounts_user.php?delete=<?= $fetch_accounts['id']; ?>" onclick="return confirm('delete this account? the user related information will also be delete!')" class="delete-btn">delete</a>
+      </div>
    </div>
    <?php
          }

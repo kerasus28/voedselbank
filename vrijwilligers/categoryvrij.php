@@ -2,6 +2,7 @@
 
 include '../components/connect.php';
 
+
 session_start();
 
 if(isset($_SESSION['vrijwilliger_id'])){
@@ -20,7 +21,7 @@ include 'wishlistcart.php';
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>category</title>
+   <title>Categorie</title>
    
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -35,7 +36,7 @@ include 'wishlistcart.php';
 
 <section class="products">
 
-   <h1 class="heading">category</h1>
+   <h1 class="heading">Categorie </h1>
 
    <div class="box-container">
 
@@ -49,14 +50,15 @@ include 'wishlistcart.php';
    <form action="" method="post" class="box">
       <input type="hidden" name="pid" value="<?= $fetch_product['id']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
+      <input type="hidden" name="details" value="<?= $fetch_product['details']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
       <!-- <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button> -->
       <!-- <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a> -->
       <img src="../uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
-      <div class="name"><?= $fetch_product['name']; ?></div>
+      <div class="name"><?= $fetch_product['details']; ?></div>
       <div class="flex">
-         <div class="price"><span>$</span><?= $fetch_product['price']; ?><span>/-</span></div>
+         <div class="price"><span></span><?= $fetch_product['price']; ?><span></span></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
       <input type="submit" value="add to cart" class="btn" name="add_tocart">

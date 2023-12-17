@@ -53,7 +53,7 @@ if(isset($_GET['delete'])){
 
 <div class="box">
    <p>Vrijwilligers toevoegen</p>
-   <a href="../vrijwilligers/vrijwilligers_register.php" class="option-btn">Toevoegen</a>
+   <a href="vrijwilligers_register.php" class="option-btn">Toevoegen</a>
 </div>
 
 <?php

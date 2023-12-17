@@ -11,23 +11,22 @@ if(isset($_SESSION['vrijwilliger_id'])){
    header('location:../home.php');
 };
 
+
 if(isset($_POST['order'])){
 
    $name = $_POST['name'];
-   $number = $_POST['number'];
-   $email = $_POST['email'];
-   $method = $_POST['method'];
-   $address = 'flat no. '. $_POST['flat'] .', '. $_POST['street'] .', '. $_POST['city'] .', '. $_POST['state'] .', '. $_POST['country'] .' - '. $_POST['pin_code'];
    $total_products = $_POST['total_products'];
-   $total_price = $_POST['total_price'];
+   $placed_on = $_POST['date'];
+   $postcode=$_POST['postcode'];
+  
 
    $check_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
    $check_cart->execute([$vrijwilliger_id]);
 
    if($check_cart->rowCount() > 0){
 
-      $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?,?,?,?,?,?,?,?)");
-      $insert_order->execute([$vrijwilliger_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
+      $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name,total_products,placed_on,postcode) VALUES(?,?,?,?,?)");
+      $insert_order->execute([$vrijwilliger_id, $name, $total_products,$placed_on,$postcode]);
 
       $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
       $delete_cart->execute([$vrijwilliger_id]);
@@ -54,7 +53,14 @@ if(isset($_POST['order'])){
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="../css/style.css">
-
+  <style>
+.inputBox{
+   font-size: 20px;
+}
+.flex{
+   font-size: 20px;
+}
+</style>
 </head>
 <body>
    
@@ -62,9 +68,9 @@ if(isset($_POST['order'])){
 
 <section class="checkout-orders">
 
-   <form action="" method="POST">
+   <form action="" method="POST" class="form-container">
 
-   <h3>your orders</h3>
+   <h3>Producten</h3>
 
       <div class="display-orders">
       <?php
@@ -74,11 +80,11 @@ if(isset($_POST['order'])){
          $select_cart->execute([$vrijwilliger_id]);
          if($select_cart->rowCount() > 0){
             while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
-               $cart_items[] = $fetch_cart['name'].' ('.$fetch_cart['price'].' x '. $fetch_cart['quantity'].') - ';
+               $cart_items[] = $fetch_cart['details'].' ( x '. $fetch_cart['quantity'].') - ';
                $total_products = implode($cart_items);
-               $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);
+               $grand_total += ( $fetch_cart['quantity']);
       ?>
-         <p> <?= $fetch_cart['name']; ?> <span>(<?= '$'.$fetch_cart['price'].'/- x '. $fetch_cart['quantity']; ?>)</span> </p>
+         <p> <?= $fetch_cart['details']; ?> <span>(<?= $fetch_cart['quantity']; ?>)</span> </p>
       <?php
             }
          }else{
@@ -86,66 +92,76 @@ if(isset($_POST['order'])){
          }
       ?>
          <input type="hidden" name="total_products" value="<?= $total_products; ?>">
-         <input type="hidden" name="total_price" value="<?= $grand_total; ?>" value="">
-         <div class="grand-total">grand total : <span>$<?= $grand_total; ?>/-</span></div>
       </div>
 
-      <h3>place your orders</h3>
+      <h3>Voeg voedselpakket aan een familie</h3>
 
-      <div class="flex">
-         <div class="inputBox">
-            <span>your name :</span>
-            <input type="text" name="name" placeholder="enter your name" class="box" maxlength="20" required>
-         </div>
-         <div class="inputBox">
-            <span>your number :</span>
-            <input type="number" name="number" placeholder="enter your number" class="box" min="0" max="9999999999" onkeypress="if(this.value.length == 10) return false;" required>
-         </div>
-         <div class="inputBox">
-            <span>your email :</span>
-            <input type="email" name="email" placeholder="enter your email" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>payment method :</span>
-            <select name="method" class="box" required>
-               <option value="cash on delivery">cash on delivery</option>
-               <option value="credit card">credit card</option>
-               <option value="paytm">paytm</option>
-               <option value="paypal">paypal</option>
-            </select>
-         </div>
-         <div class="inputBox">
-            <span>address line 01 :</span>
-            <input type="text" name="flat" placeholder="e.g. flat number" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>address line 02 :</span>
-            <input type="text" name="street" placeholder="e.g. street name" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>city :</span>
-            <input type="text" name="city" placeholder="e.g. mumbai" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>state :</span>
-            <input type="text" name="state" placeholder="e.g. maharashtra" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>country :</span>
-            <input type="text" name="country" placeholder="e.g. India" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>pin code :</span>
-            <input type="number" min="0" name="pin_code" placeholder="e.g. 123456" min="0" max="999999" onkeypress="if(this.value.length == 6) return false;" class="box" required>
-         </div>
+<div class="flex">
+      <select name="name" class="box" id="familyName" required>
+    <!-- Optionele standaardoptie -->
+    <option class="box"value="">Selecteer een familie</option>
+    <?php
+    $select_names = $conn->prepare("SELECT name FROM `messages`");
+    $select_names->execute();
+    $results = $select_names->fetchAll();
+
+    foreach ($results as $result) {
+        $name = $result['name'];
+        echo "<option value='$name'>$name</option>";
+    }
+    ?>
+</select>
+
+<!-- Voeg een script toe om de waarde van $name bij te werken -->
+<script>
+    const select = document.getElementById('familyName');
+    select.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        const selectedName = selectedOption.value;
+
+        // Verstuur geselecteerde naam naar de server voor het bijwerken van de postcode
+        fetch('get_postcode.php', {
+            method: 'POST',
+            body: JSON.stringify({ name: selectedName }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Bijgewerkte postcode in de inputvelden invoegen
+            document.querySelector('.box[name="postcode"]').value = data.postcode;
+            document.querySelector('input[readonly]').value = data.postcode;
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
       </div>
+<div class="inputBox"><br>
+        <span>Postcode:</span>
+        <br>
+      <?php
+      $select_postcode = $conn->prepare("SELECT postcode FROM messages WHERE name = ?");
+      $select_postcode->execute([$name]);
+      // Nu kun je de postcode ophalen als die beschikbaar is
+      $postcode = $select_postcode->fetchColumn();
+      ?>
+    <input type="hidden" class="box" name="postcode" value="<?= $postcode ?>"> 
+    <input type="text" class="box" value="<?= $postcode ?>" readonly>
+</div>
 
-      <input type="submit" name="order" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>" value="place order">
+<div class="inputBox"><br>
+        <span>Datum:</span>
+        <br>
+        <input type="date" name="date" class="box">
+        </div>
+</div>
 
-   </form>
+<input type="submit" name="order" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>" value="place order">
+
 
 </section>
-
+</form>
 
 
 

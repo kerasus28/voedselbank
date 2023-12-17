@@ -8,6 +8,7 @@ if(isset($_POST['add_to_wishlist'])){
 
       $pid = $_POST['pid'];
       $name = $_POST['name'];
+      $details = $_POST['details'];
       $price = $_POST['price'];
       $image = $_POST['image'];
    
@@ -24,7 +25,7 @@ if(isset($_POST['add_to_wishlist'])){
          $message[] = 'already added to cart!';
       }else{
          $insert_wishlist = $conn->prepare("INSERT INTO `wishlist`(user_id, pid, name, price, image) VALUES(?,?,?,?,?)");
-         $insert_wishlist->execute([$vrijwilliger_id, $pid, $name, $price, $image]);
+         $insert_wishlist->execute([$vrijwilliger_id, $pid, $name,$details, $price, $image]);
          $message[] = 'added to wishlist!';
       }
 
@@ -40,6 +41,7 @@ if(isset($_POST['add_tocart'])){
 
       $pid = $_POST['pid'];
       $name = $_POST['name'];
+      $details = $_POST['details'];
       $price = $_POST['price'];
       $image = $_POST['image'];
       $qty = $_POST['qty'];
@@ -60,8 +62,8 @@ if(isset($_POST['add_tocart'])){
             $delete_wishlist->execute([$name, $vrijwilliger_id]);
          }
 
-         $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
-         $insert_cart->execute([$vrijwilliger_id, $pid, $name, $price, $qty, $image]);
+         $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, details, price, quantity, image) VALUES(?,?,?,?,?,?,?)");
+         $insert_cart->execute([$vrijwilliger_id, $pid, $name,$details, $price, $qty, $image]);
          $message[] = 'added to cart!';
          
    // }

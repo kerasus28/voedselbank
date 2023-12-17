@@ -52,7 +52,7 @@ if(isset($_GET['delete'])){
 
 <section class="show-products">
 
-   <h1 class="heading">products added</h1>
+   <h1 class="heading">Toegevoegde producten</h1>
 
    <div class="box-container">
 
@@ -65,11 +65,11 @@ if(isset($_GET['delete'])){
    <div class="box">
       <img src="../uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
-      <div class="price">€<span><?= $fetch_products['price']; ?></span>/-</div>
+      <div class="price"><span><?= $fetch_products['price']; ?></span></div>
       <div class="details"><span><?= $fetch_products['details']; ?></span></div>
       <div class="flex-btn">
          <a href="update_productt.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>
-         <a href="overzichtvrij.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
+         <!-- <a href="overzichtvrij.php?delete=<?= $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a> -->
       </div>
    </div>
    <?php

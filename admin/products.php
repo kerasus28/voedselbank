@@ -27,9 +27,9 @@ if(isset($_POST['add_product'])){
    $select_products = $conn->prepare("SELECT * FROM `products` WHERE name = ?");
    $select_products->execute([$name]);
 
-   if($select_products->rowCount() > 0){
-      $message[] = 'product name already exist!';
-   }else{
+   // if($select_products->rowCount() > 0){
+   //    $message[] = 'product name already exist!';
+   // }else{
 
       $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01, streepjescode) VALUES(?,?,?,?,?)");
       $insert_products->execute([$name, $details, $price, $image_01,$streepjescode]);
@@ -38,17 +38,14 @@ if(isset($_POST['add_product'])){
          if($image_size_01 > 2000000){
             $message[] = 'image size is too large!';
          }else{
-            // move_uploaded_file($image_tmp_name_01, $image_folder_01);
-            // move_uploaded_file($image_tmp_name_02, $image_folder_02);
-            // move_uploaded_file($image_tmp_name_03, $image_folder_03);
+            move_uploaded_file($image_tmp_name_01, $image_folder_01);
             $message[] = 'new product added!';
          }
 
       }
 
-   }  
-
-};
+   } 
+;
 
 if(isset($_GET['delete'])){
 

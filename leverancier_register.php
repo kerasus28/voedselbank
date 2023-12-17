@@ -1,6 +1,6 @@
 <?php
 
-include '../components/connect.php';
+include 'components/connect.php';
 
 session_start();
 
@@ -17,6 +17,9 @@ if(isset($_POST['submit'])){
    $persoon = $_POST['contactpersoon'];
    $email = $_POST['email'];
    $tel = $_POST['telefoonnummer'];
+   $product = $_POST['product'];
+   $aantal = $_POST['aantal'];   
+   $leveringdatum = $_POST['leveringdatum'];
    
   
 
@@ -27,10 +30,10 @@ if(isset($_POST['submit'])){
    if($select_user->rowCount() > 0){
       $message[] = 'email already exists!';
       }else{
-         $insert_user = $conn->prepare("INSERT INTO `leveranciers`(bedrijfsnaam, adres, contactpersoon,email, telefoonnummer) VALUES(?,?,?,?,?)");
-         $insert_user->execute([$name, $adres, $persoon,$email,$tel]);
+         $insert_user = $conn->prepare("INSERT INTO `leveranciers`(bedrijfsnaam, adres, contactpersoon,email, telefoonnummer, product, aantal, leveringdatum) VALUES(?,?,?,?,?,?,?,?)");
+         $insert_user->execute([$name, $adres, $persoon,$email,$tel,$product,$aantal,$leveringdatum]);
          $message[] = 'registered successfully, login now please!';
-         header("Location: ../home.php");
+         header("Location: leveranciers_user.php");
       }
    }
 
@@ -50,22 +53,25 @@ if(isset($_POST['submit'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
    
-<?php include '../components/user_header.php'; ?>
+<?php include 'components/user_header.php'; ?>
 
 <section class="form-container">
 
    <form action="" method="post">
       <h3>Leverancier toevoegen</h3>
-      <input type="text" name="bedrijfsnaam" required placeholder="bedrijfsnaam" maxlength="20"  class="box">
-      <input type="text" name="adres" required placeholder="adres" maxlength="50"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="text" name="bedrijfsnaam" required placeholder="bedrijfsnaam" maxlength="100"  class="box">
+      <input type="text" name="adres" required placeholder="adres"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="text" name="contactpersoon" required placeholder="contactpersoon" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
-      <input type="email" name="email" required placeholder="email" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="email" name="email" required placeholder="email"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="text" name="telefoonnummer" required placeholder="telefoonnummer" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="text" name="product" required placeholder="product"   class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="number" name="aantal" required placeholder="aantal"   class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="date" name="leveringdatum" required placeholder="leveringdatum"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="submit" value="register now" class="btn" name="submit">
    </form>
 
@@ -83,7 +89,7 @@ if(isset($_POST['submit'])){
 
 
 
-<?php include '../components/footer.php'; ?>
+<?php include 'components/footer.php'; ?>
 
 <script src="js/script.js"></script>
 

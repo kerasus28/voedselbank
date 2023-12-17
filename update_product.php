@@ -90,11 +90,11 @@ if(isset($_POST['update'])){
             <img src="uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">
          </div>
       </div>
-      <span>update name</span>
+      <span>Update Categorie</span>
       <input type="text" name="name" required class="box" maxlength="100" placeholder="enter product name" value="<?= $fetch_products['name']; ?>">
-      <span>update price</span>
+      <span>Update Aantal</span>
       <input type="number" name="price" required class="box" min="0" max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" value="<?= $fetch_products['price']; ?>">
-      <span>update details</span>
+      <span>Update Naam</span>
       <textarea name="details" class="box" required cols="30" rows="10"><?= $fetch_products['details']; ?></textarea>
       <span>update image 01</span>
       <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box">

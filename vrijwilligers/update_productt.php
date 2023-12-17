@@ -83,7 +83,7 @@ if(isset($_POST['update'])){
       <input type="hidden" name="old_image_01" value="<?= $fetch_products['image_01']; ?>">
       <div class="image-container">
          <div class="main-image">
-            <img src="uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">
+            <img src="../uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">
          </div>
          <div class="sub-image">
             <img src="../uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">

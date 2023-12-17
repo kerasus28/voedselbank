@@ -38,7 +38,7 @@ include 'wishlistcart.php';
 
 <section class="category">
 
-   <h1 class="heading">shop by category</h1>
+   <h1 class="heading">Producten Per categorie</h1>
 
    <div class="swiper category-slider">
 
@@ -101,7 +101,7 @@ include 'wishlistcart.php';
 
 <section class="home-products">
 
-   <h1 class="heading">latest products</h1>
+   <h1 class="heading">laatste producten</h1>
 
    <div class="swiper products-slider">
 
@@ -116,14 +116,13 @@ include 'wishlistcart.php';
    <form action="" method="post" class="swiper-slide slide">
       <input type="hidden" name="pid" value="<?= $fetch_product['id']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
+      <input type="hidden" name="details" value="<?= $fetch_product['details']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
-      <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button>
-      <a href="../quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a>
       <img src="../uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
-      <div class="name"><?= $fetch_product['name']; ?></div>
+      <div class="name"><?= $fetch_product['details']; ?></div>
       <div class="flex">
-         <div class="price"><span>$</span><?= $fetch_product['price']; ?><span>/-</span></div>
+         <div class="price"><span></span><?= $fetch_product['price']; ?><span></span></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
       <input type="submit" value="add to cart" class="btn" name="add_tocart">
