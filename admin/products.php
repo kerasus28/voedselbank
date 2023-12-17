@@ -85,7 +85,7 @@ if(isset($_GET['delete'])){
 
 <section class="add-products">
 
-   <h1 class="heading">add product</h1>
+   <h1 class="heading">producten toevoegen</h1>
 
    <form action="" method="post" enctype="multipart/form-data">
       <div class="flex">
@@ -117,7 +117,7 @@ if(isset($_GET['delete'])){
 
 <section class="show-products">
 
-   <h1 class="heading">products added</h1>
+   <h1 class="heading">toegevoegde producten</h1>
 
    <div class="box-container">
 

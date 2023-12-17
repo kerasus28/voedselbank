@@ -33,7 +33,7 @@ if(isset($_GET['delete'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>placed orders</title>
+   <title>Geplaatste bestellingen</title>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -46,7 +46,7 @@ if(isset($_GET['delete'])){
 
 <section class="orders">
 
-<h1 class="heading">placed orders</h1>
+<h1 class="heading">Geplaatste bestellingen</h1>
 
 <div class="box-container">
 
@@ -57,10 +57,10 @@ if(isset($_GET['delete'])){
          while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
    ?>
    <div class="box">
-      <p> placed on : <span><?= $fetch_orders['placed_on']; ?></span> </p>
-      <p> name : <span><?= $fetch_orders['name']; ?></span> </p>
+      <p> geplaatst op : <span><?= $fetch_orders['placed_on']; ?></span> </p>
+      <p> naam : <span><?= $fetch_orders['name']; ?></span> </p>
       <p> postcode : <span><?= $fetch_orders['postcode']; ?></span> </p>
-      <p> total products : <span><?= $fetch_orders['total_products']; ?></span> </p>
+      <p> totaal producten : <span><?= $fetch_orders['total_products']; ?></span> </p>
       <form action="" method="post">
          <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
         <div class="flex-btn">

@@ -49,7 +49,7 @@
          ?>
          <p><?= $fetch_profile["name"]; ?></p>
          <a href="update_vrijwilliger.php" class="btn">update profile</a>
-         <a href="../components/vrijwilliger_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
+         <a href="../components/vrijwilliger_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">Uitloggen</a> 
          <?php
             }else{
          ?>
