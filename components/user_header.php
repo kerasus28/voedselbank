@@ -50,14 +50,14 @@
          ?>
          <p><?= $fetch_profile["name"]; ?></p>
          <a href="update_user.php" class="btn">update profile</a>
-         <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
+         <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">Uitloggen</a> 
          <?php
             }else{
          ?>
-         <p>please login or register first!</p>
+         <p>login of registreer eerst A.U.B</p>
          <div class="flex-btn">
-            <a href="user_register.php" class="option-btn">register</a>
-            <a href="user_login.php" class="option-btn">login</a>
+            <a href="user_register.php" class="option-btn">Registreer</a>
+            <a href="user_login.php" class="option-btn">Login</a>
          </div>
          <?php
             }

@@ -26,7 +26,7 @@
          <a href="../admin/vrijwilligers_accounts.php">Vrijwilligers</a>
          <a href="../admin/leverancier_accounts.php">Leveranciers</a>
          <a href="../admin/messages.php">Families</a>
-         <a href="../admin/managment.php">Managment</a>
+         <a href="../admin/managment.php">Management</a>
       </nav>
 
       <div class="icons">
@@ -41,7 +41,7 @@
             $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
          ?>
          <p><?= $fetch_profile['name']; ?></p>
-         <a href="../admin/update_profile.php" class="btn">Update profile</a>
+         <a href="../admin/update_profile.php" class="btn">Update profiel</a>
          <!-- <div class="flex-btn">
             <a href="../admin/register_admin.php" class="option-btn">register</a>
             <a href="../admin/admin_login.php" class="option-btn">login</a>

@@ -43,8 +43,8 @@ if(isset($_GET['delete'])){
    <div class="box-container">
 
    <div class="box">
-      <p>add new admin</p>
-      <a href="register_admin.php" class="option-btn">register admin</a>
+      <p>Nieuwe admin toevoegen</p>
+      <a href="register_admin.php" class="option-btn">registreer admin</a>
    </div>
 
    <?php
@@ -55,7 +55,7 @@ if(isset($_GET['delete'])){
    ?>
    <div class="box">
       <p> admin id : <span><?= $fetch_accounts['id']; ?></span> </p>
-      <p> admin name : <span><?= $fetch_accounts['name']; ?></span> </p>
+      <p> admin naam : <span><?= $fetch_accounts['name']; ?></span> </p>
       <div class="flex-btn">
          <a href="admin_accounts.php?delete=<?= $fetch_accounts['id']; ?>" onclick="return confirm('delete this account?')" class="delete-btn">delete</a>
          <?php

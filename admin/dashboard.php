@@ -36,9 +36,9 @@ if(!isset($admin_id)){
    <div class="box-container">
 
       <div class="box">
-         <h3>Welcome!</h3>
+         <h3>Welkom!</h3>
          <p><?= $fetch_profile['name']; ?></p>
-         <a href="update_profile.php" class="btn">Update profile</a>
+         <a href="update_profile.php" class="btn">Update profiel</a>
       </div>
 
       <div class="box">
@@ -48,8 +48,8 @@ if(!isset($admin_id)){
             $number_of_orders = $select_orders->rowCount()
          ?>
          <h3><?= $number_of_orders; ?></h3>
-         <p>orders placed</p>
-         <a href="placed_orders.php" class="btn">see orders</a>
+         <p>Geplaatste bestellingen</p>
+         <a href="placed_orders.php" class="btn">bestellingen bekijken</a>
       </div>
 
       <div class="box">
@@ -59,8 +59,8 @@ if(!isset($admin_id)){
             $number_of_products = $select_products->rowCount()
          ?>
          <h3><?= $number_of_products; ?></h3>
-         <p>products added</p>
-         <a href="products.php" class="btn">see products</a>
+         <p>Toegevoegde producten</p>
+         <a href="products.php" class="btn">Producten bekijken</a>
       </div>
 
       <div class="box">
@@ -71,7 +71,7 @@ if(!isset($admin_id)){
          ?>
          <h3><?= $number_of_users; ?></h3>
          <p>Medewerkers</p>
-         <a href="users_accounts.php" class="btn">see Medewerkers</a>
+         <a href="users_accounts.php" class="btn">Medewerkers bekijken</a>
       </div>
 
       <div class="box">
@@ -82,7 +82,7 @@ if(!isset($admin_id)){
          ?>
          <h3><?= $number_of_admins; ?></h3>
          <p>Directie</p>
-         <a href="admin_accounts.php" class="btn">see directie</a>
+         <a href="admin_accounts.php" class="btn">directie bekijken</a>
       </div>
        
       <div class="box">
@@ -93,7 +93,7 @@ if(!isset($admin_id)){
          ?>
          <h3><?= $number_of_admins; ?></h3>
          <p>Vrijwilligers</p>
-         <a href="vrijwilligers_accounts.php" class="btn">see vrijwilligers</a>
+         <a href="vrijwilligers_accounts.php" class="btn">vrijwilligers bekijken</a>
       </div>
       
       <div class="box">
@@ -103,8 +103,8 @@ if(!isset($admin_id)){
             $number_of_messages = $select_messages->rowCount()
          ?>
          <h3><?= $number_of_messages; ?></h3>
-         <p>new messages</p>
-         <a href="messages.php" class="btn">see messages</a>
+         <p>Nieuwe berichten</p>
+         <a href="messages.php" class="btn">Berichten bekijken</a>
       </div>
 
    </div>

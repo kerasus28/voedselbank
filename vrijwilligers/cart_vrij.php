@@ -54,7 +54,7 @@ if(isset($_POST['update_qty'])){
 
 <section class="products shopping-cart">
 
-   <h3 class="heading">shopping cart</h3>
+   <h3 class="heading">Winkelmand</h3>
 
    <div class="box-container">
 
@@ -88,8 +88,8 @@ if(isset($_POST['update_qty'])){
 
    <div class="cart-total">
       <!-- <p>Totaal producten : <span><?= $grand_total; ?></span></p> -->
-      <a href="cart_vrij.php?delete_all" class="delete-btn " onclick="return confirm('delete all from cart?');">delete all item</a>
-      <a href="checkoutvrij.php" class="btn">proceed to checkout</a>
+      <a href="cart_vrij.php?delete_all" class="delete-btn " onclick="return confirm('delete all from cart?');">Verwijder alles uit je winkelmand</a>
+      <a href="checkoutvrij.php" class="btn">verder met je bestelling</a>
    </div>
 
 </section>

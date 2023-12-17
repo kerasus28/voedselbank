@@ -52,7 +52,7 @@ if(isset($_GET['delete'])){
 
 <section class="show-products">
 
-   <h1 class="heading">products added</h1>
+   <h1 class="heading">Producten toegevoegd</h1>
 
    <div class="box-container">
 
