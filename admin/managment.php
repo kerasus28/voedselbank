@@ -14,41 +14,39 @@ if (isset($_POST['submit'])) {
     $selected_end_date = $_POST['selected_end_date'];
     $selected_postcode = $_POST['selected_postcode'];
 
-    // Query voorbereiden en uitvoeren
     $query = $conn->prepare("
-            SELECT 
-    messages.name AS family_name,
-    messages.postcode AS postcode,
-    orders.total_products AS total_products,
-    orders.placed_on AS order_date
-FROM 
-    orders
-INNER JOIN 
-    messages ON orders.postcode = messages.postcode
-WHERE 
-    orders.placed_on BETWEEN ? AND ?
-    AND orders.postcode = ?
-GROUP BY 
-    messages.name, orders.postcode, orders.placed_on
-
+        SELECT 
+            messages.name AS family_name,
+            messages.postcode AS postcode,
+            orders.total_products AS total_products,
+            MAX(orders.placed_on) AS latest_order_date
+        FROM 
+            orders
+        INNER JOIN 
+            messages ON orders.name = messages.name
+        WHERE 
+            orders.placed_on BETWEEN ? AND ?
+            AND orders.postcode = ?
+        GROUP BY 
+            messages.name, orders.postcode
     ");
 
     $query->execute([$selected_start_date, $selected_end_date, $selected_postcode]);
 
-    // Resultaten opbouwen
     $resultTable .= "<table>";
-    $resultTable .= "<tr><th>Familienaam</th><th>Totaal Producten</th><th>Postcode</th><th>Datum</th></tr>";
+    $resultTable .= "<tr><th>Familienaam</th><th>Totaal Producten</th><th>Postcode</th><th>Laatste Besteldatum</th></tr>";
     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
         $resultTable .= "<tr>";
         $resultTable .= "<td>" . $row['family_name'] . "</td>";
         $resultTable .= "<td>" . $row['total_products'] . "</td>";
         $resultTable .= "<td>" . $row['postcode'] . "</td>";
-        $resultTable .= "<td>" . $row['order_date'] . "</td>";
+        $resultTable .= "<td>" . $row['latest_order_date'] . "</td>";
         $resultTable .= "</tr>";
     }
     $resultTable .= "</table>";
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,3 +99,4 @@ GROUP BY
     <?php echo $resultTable; // De resultaten worden hier weergegeven ?>
     </section>
 </html>
+<script src="../js/admin_script.js"></script>

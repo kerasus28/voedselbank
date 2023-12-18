@@ -83,8 +83,20 @@ if(isset($_POST['update'])){
             <img src="../uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">
          </div>
       </div>
-      <span>update Categorie</span>
-      <input type="text" name="name" required class="box" maxlength="100" placeholder="enter product name" value="<?= $fetch_products['name']; ?>">
+      <div class="inputBox">
+            <span>product Categorie</span>
+         <select class="box" name="name">
+    <option class="box" value="-">-</option>
+    <option class="box" value="AGF" <?php if ($fetch_products['name'] === 'AGF') echo 'selected'; ?>>AGF</option>
+    <option class="box" value="Beleg" <?php if ($fetch_products['name'] === 'Beleg') echo 'selected'; ?>>Beleg</option>
+    <option class="box" value="Zuivel" <?php if ($fetch_products['name'] === 'Zuivel') echo 'selected'; ?>>Zuivel</option>
+    <option class="box" value="Brood" <?php if ($fetch_products['name'] === 'Brood') echo 'selected'; ?>>Brood</option>
+    <option class="box" value="Drinken" <?php if ($fetch_products['name'] === 'Drinken') echo 'selected'; ?>>Drinken</option>
+    <option class="box" value="Pasta" <?php if ($fetch_products['name'] === 'Pasta') echo 'selected'; ?>>Pasta</option>
+    <option class="box" value="Eten" <?php if ($fetch_products['name'] === 'Eten') echo 'selected'; ?>>Eten</option>
+    <option class="box" value="Snack" <?php if ($fetch_products['name'] === 'Snack') echo 'selected'; ?>>Snack</option>
+    <option class="box" value="Droogmetica" <?php if ($fetch_products['name'] === 'Droogmetica') echo 'selected'; ?>>Droogmetica</option>
+</select>
       <span>update Aantal</span>
       <input type="number" name="price" required class="box" min="0" max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" value="<?= $fetch_products['price']; ?>">
       <span>update Naam</span>

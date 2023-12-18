@@ -22,12 +22,12 @@ if(isset($_POST['add_product'])){
    $image_tmp_name_01 = $_FILES['image_01']['tmp_name'];
    $image_folder_01 = 'uploaded_img/'.$image_01;
 
-   $select_products = $conn->prepare("SELECT * FROM `products` WHERE name = ?");
-   $select_products->execute([$name]);
+   $select_products = $conn->prepare("SELECT * FROM `products` WHERE details = ?");
+   $select_products->execute([$details]);
 
-   // if($select_products->rowCount() > 0){
-   //    $message[] = 'product name already exist!';
-   // }else{
+   if($select_products->rowCount() > 0){
+      $message[] = 'product name already exist!';
+   }else{
 
       $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01, streepjescode) VALUES(?,?,?,?,?)");
       $insert_products->execute([$name, $details, $price, $image_01,$streepjescode]);
@@ -43,6 +43,7 @@ if(isset($_POST['add_product'])){
       }
 
    }  
+}
 ;
 
 if(isset($_GET['delete'])){
@@ -103,7 +104,19 @@ if(isset($_GET['delete'])){
          </div>
          <div class="inputBox">
             <span>product Categorie (required)</span>
-            <input type="text" class="box" required maxlength="100" placeholder="enter product Categorie" name="name">
+            <select class="box" name="name" id="volwassenen">
+<option class="box" value="-">-</option> 
+<option class="box">AGF</option> 
+<option class="box">Beleg</option> 
+<option class="box">Zuivel</option> 
+<option class="box">Brood</option> 
+<option class="box">Drinken</option> 
+<option class="box">Pasta</option> 
+<option class="box">Eten</option> 
+<option class="box">Snack</option>
+<option class="box">Droogmetica</option>  
+</select> 
+            <!-- <input type="text" class="box" required maxlength="100" placeholder="enter product Categorie" name="name"> -->
          </div>
          <div class="inputBox">
             <span>product Naam (required)</span>
@@ -111,7 +124,7 @@ if(isset($_GET['delete'])){
          </div>
          <div class="inputBox">
             <span>product Aantal (required)</span>
-            <input type="number" min="0" class="box" required max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" name="price">
+            <input type="number" min="0" class="box" required max="9999999999" placeholder="enter product aantal" onkeypress="if(this.value.length == 10) return false;" name="price">
          </div>
         <div class="inputBox">
             <span>image 01 (required)</span>
