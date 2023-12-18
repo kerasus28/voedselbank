@@ -22,6 +22,7 @@
          <a href="producten.php">Producten</a>
          <a href="producten_overzicht.php">Producten overzicht</a>
          <a href="leveranciers_user.php">Leveranciers</a>
+         <a href="placed_orderss.php">Voedselpakketen</a>
       </nav>
 
       <div class="icons">

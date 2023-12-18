@@ -45,6 +45,7 @@ $total_no_dates = $count_no_dates->fetch(PDO::FETCH_ASSOC)['no_dates'];
          <!-- <a href="producten_vrijwilligers.php">Producten</a> -->
          <a href="overzichtvrij.php">Producten overzicht</a>
          <a href="messagess.php">Families</a>
+         <a href="placed_ordersss.php">Voedselpakketen</a>
          <a href="meldingen.php">Meldigen <span class="notification-count"><?= $total_no_dates; ?></span></a>
       </nav>
 
