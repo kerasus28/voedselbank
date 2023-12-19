@@ -103,8 +103,8 @@ if(!isset($admin_id)){
             $number_of_messages = $select_messages->rowCount()
          ?>
          <h3><?= $number_of_messages; ?></h3>
-         <p>Nieuwe berichten</p>
-         <a href="messages.php" class="btn">Berichten bekijken</a>
+         <p>Families</p>
+         <a href="messages.php" class="btn">Families bekijken</a>
       </div>
 
    </div>

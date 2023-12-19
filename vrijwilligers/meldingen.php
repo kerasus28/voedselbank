@@ -56,10 +56,12 @@ if (isset($_GET['delete'])) {
    
    <?php
    $select_accounts = $conn->prepare("SELECT m.*
-                                     FROM `messages` m 
-                                     LEFT JOIN `orders` o ON m.name = o.name
-                                     WHERE o.placed_on IS NULL");
-   $select_accounts->execute();
+   FROM `messages` m 
+   LEFT JOIN `orders` o ON m.name = o.name
+   WHERE o.placed_on IS NULL
+   OR (o.placed_on < CURDATE())");
+$select_accounts->execute();
+
 
    if ($select_accounts->rowCount() > 0) {
       while ($fetch_account = $select_accounts->fetch(PDO::FETCH_ASSOC)) {
